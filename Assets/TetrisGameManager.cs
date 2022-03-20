@@ -15,7 +15,7 @@ public class TetrisGameManager : MonoBehaviour
 
     public float EndTime = 5f;
 
-    public int ClearScore = 100;
+    public static int ClearScore = 100;
 
     public enum GameState
     {
@@ -59,6 +59,7 @@ public class TetrisGameManager : MonoBehaviour
         {
             case GameState.Invalide:
                 GameStatus = GameState.GameStart;
+                GameEndText.text = string.Empty;
                 break;
 
             case GameState.GameStart:
@@ -87,7 +88,7 @@ public class TetrisGameManager : MonoBehaviour
                 if (EndTime < 0)
                 {
 
-                    SceneManager.LoadScene("Tetris");
+                    SceneManager.LoadScene("StageSelect");
 
                 }
 

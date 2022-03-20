@@ -162,14 +162,23 @@ public class TetrisBlock : MonoBehaviour
 
     private void CheckLines()
     {
+
+        var lineCount = 0;
         for (var line = TetrisStage.Instance.HeightSize - 1; line >= 0; line--)
         {
             if (HasLine(line))
             {
+                lineCount++;
                 DeleteLine(line);
-                TetrisGameManager.Instance.SetScore(1);
                 RowDown(line);
             }
+        }
+
+        if (lineCount > 0)
+        {
+            var bonus = lineCount * 5;
+            var score = Mathf.RoundToInt(lineCount * bonus);
+            TetrisGameManager.Instance.SetScore(score);
         }
     }
 
